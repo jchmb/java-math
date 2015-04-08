@@ -8,4 +8,9 @@ public class FloatAddition implements BinaryFunction<Float, Float, Float> {
 	public Float map(Pair<Float, Float> x) {
 		return x.getLeft() + x.getRight();
 	}
+	
+	@Override
+	public String toString() {
+		return "+";
+	}
 }

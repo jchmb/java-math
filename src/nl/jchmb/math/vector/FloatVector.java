@@ -84,4 +84,14 @@ public class FloatVector extends BaseVector<Float> {
 	public boolean inRange(Vector<Float> v, Float range) {
 		return distance(v) <= range;
 	}
+
+	@Override
+	public boolean contains(Vector<Float> v) {
+		for (int i = 0; i < values.length; i++) {
+			if (v.get(i) < 0 || v.get(i) >= values[i]) {
+				return false;
+			}
+		}
+		return true;
+	}
 }

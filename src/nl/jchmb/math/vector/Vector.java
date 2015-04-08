@@ -8,6 +8,7 @@ public interface Vector<T extends Number> {
 	public T distance(Vector<T> v);
 	public Vector<T> negate();
 	public boolean inRange(Vector<T> v, T range);
+	public boolean contains(Vector<T> v);
 	public T length();
 	public T get(int offset);
 	public T[] getArray();
