@@ -39,7 +39,7 @@ public class BinaryOperator<K, T> implements Node<K, T> {
 	
 	@Override
 	public String toString() {
-		return n1.getNode().toString() + " " + f.toString() + " " + n2.getNode().toString();
+		return "(" + n1.getNode().toString() + " " + f.toString() + " " + n2.getNode().toString() + ")";
 	}
 	
 	protected Connection<K, T> getLeftConnection() {

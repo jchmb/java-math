@@ -1,5 +1,7 @@
 package nl.jchmb.math.shape;
 
+import java.util.ArrayList;
+
 import nl.jchmb.math.vector.Vector;
 
 public class Rectangle<T extends Number> implements Shape<T> {
@@ -17,4 +19,20 @@ public class Rectangle<T extends Number> implements Shape<T> {
 		return container.contains(newPoint);
 	}
 
+	@Override
+	public Iterable<Vector<T>> getPointIterator() {
+		ArrayList<Vector<T>> vectors = new ArrayList<Vector<T>>();
+		vectors.add(v1);
+		vectors.add(v2);
+		return vectors;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append(v1.toString());
+		builder.append(" ^ ");
+		builder.append(v2.toString());
+		return builder.toString();
+	}
 }

@@ -4,4 +4,5 @@ import nl.jchmb.math.vector.Vector;
 
 public interface Shape<T extends Number> {
 	public boolean contains(Vector<T> p);
+	public Iterable<Vector<T>> getPointIterator();
 }

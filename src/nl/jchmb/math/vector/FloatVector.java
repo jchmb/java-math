@@ -18,7 +18,7 @@ public class FloatVector extends BaseVector<Float> {
 	public Vector<Float> add(Vector<Float> v) {
 		Float[] newValues = new Float[values.length];
 		for (int i = 0; i < newValues.length; i++) {
-			newValues[i] = values[i] + v.get(i);
+			newValues[i] = values[i].floatValue() + v.get(i).floatValue();
 		}
 		return new FloatVector(newValues);
 	}
@@ -27,7 +27,7 @@ public class FloatVector extends BaseVector<Float> {
 	public Vector<Float> scale(Float multiplier) {
 		Float[] newValues = new Float[values.length];
 		for (int i = 0; i < newValues.length; i++) {
-			newValues[i] = multiplier * values[i];
+			newValues[i] = multiplier.floatValue() * values[i].floatValue();
 		}
 		return new FloatVector(newValues);
 	}
@@ -36,7 +36,7 @@ public class FloatVector extends BaseVector<Float> {
 	public Float contract(Vector<Float> v) {
 		Float contraction = 0.0f;
 		for (int i = 0; i < values.length; i++) {
-			contraction += values[i] * v.get(i);
+			contraction += values[i].floatValue() * v.get(i).floatValue();
 		}
 		return contraction;
 	}
@@ -82,16 +82,30 @@ public class FloatVector extends BaseVector<Float> {
 
 	@Override
 	public boolean inRange(Vector<Float> v, Float range) {
-		return distance(v) <= range;
+		return distance(v).floatValue() <= range.floatValue();
 	}
 
 	@Override
 	public boolean contains(Vector<Float> v) {
 		for (int i = 0; i < values.length; i++) {
-			if (v.get(i) < 0 || v.get(i) >= values[i]) {
+			if (v.get(i).floatValue() < 0.0f || v.get(i).floatValue() >= values[i].floatValue()) {
 				return false;
 			}
 		}
 		return true;
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("(");
+		for (int i = 0; i < values.length; i++) {
+			if (i > 0) {
+				builder.append(", ");
+			}
+			builder.append(values[i]);
+		}
+		builder.append(")");
+		return builder.toString();
 	}
 }
